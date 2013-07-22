@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>BrainF*ckMe</title>
+		<link rel="stylesheet" href="css/kraken.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+
+		<section id="main" class="container">
+			<div class="row">
+				<div class="grid-4">
+					<h1>BrainF*ckMe</h1>
+				</div>
+				<div class="grid-2 text-right text-small">
+					<em><span class="text-small">Because... f*ck!</span></em>
+				</div>
+			</div>
+			<div class="row space-bottom-small">
+				<div class="grid-6 text-small">
+					<span class="text-muted">
+						Write the f*cking Brainf*ck code and run the f*ck on the fly.
+					</span>
+				</div>
+			</div>
+			
+			<div class="row">
+				<textarea id="console" autofocus="autofocus" placeholder="F*ck here"></textarea>
+			</div>
+			
+			<!-- <div class="row">
+				<input type="text" id="input" placeholder="Input the f*ck here">
+			</div> -->
+
+			<div class="row">
+				<div class="grid-2">
+					<a href="#" id="btnRun" class="btn btn-blue btn-large btn-block">Run</a>
+					<a href="#" id="btnReset" class="btn btn-block">Reset</a>
+				</div>
+				<div class="grid-4 text-right space-top-small space-bottom">
+					<div class="group space-bottom-small">
+						<a href="#" class="btn btnInput">+</a>
+						<a href="#" class="btn btnInput">-</a>
+						<a href="#" class="btn btnInput">&lt</a>
+						<a href="#" class="btn btnInput">&gt</a>
+						<a href="#" class="btn btnInput">.</a>
+						<a href="#" class="btn btnInput">,</a>
+						<a href="#" class="btn btnInput">[</a>
+						<a href="#" class="btn btnInput">]</a>
+					</div>
+					<div class="group space-bottom-small">
+						<a href="#" id="btnClear" class="btn">Clear</a>
+						<a href="#" id="btnBack" class="btn">Back</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+			</div>
+			<div class="row">
+			</div>
+
+			<div class="row space-top">
+				<!-- <div class="grid-6"> -->
+					<textarea readonly id="output" placeholder="Output of f*ck here" rows="4"></textarea>
+				<!-- </div> -->
+			</div>
+
+			<br>
+			<label id="log"></label>
+			<br>
+			<label id="array"></label>
+			<br>
+		</section>
+
+		<script src="js/underscore.js"></script>
+		<script src="js/app.js"></script>
+
+		<!--
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/backbone-min.js"></script>
+		<script src="js/mustache.js"></script>
+		-->
+
+	</body>
+</html>
