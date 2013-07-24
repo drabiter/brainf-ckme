@@ -148,14 +148,14 @@
   backBtn.onclick = function(e) {
     e.preventDefault();
     consoleEl.value = consoleEl.value.split('').slice(0, -1).join('');
-    consoleEl.focus();
+    // consoleEl.focus();
   };
 
   var clearBtn = $('#btnClear');
   clearBtn.onclick = function(e) {
     e.preventDefault();
     consoleEl.value = '';
-    consoleEl.focus();
+    // consoleEl.focus();
   };
 
   var runBtn = $('#btnRun');
