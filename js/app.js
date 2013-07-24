@@ -10,14 +10,26 @@
   var jump = [];
   var cursor = 0;
 
+  var input = [];
+  var output = [];
+
+  var inputPtr = 0;
+  var inputLength = 0;
+
   var resetBF = function() {
-    A = [0];
+    A.length = 0;
+    A.push(0);
     pointer = 0;
     length = 1;
 
-    code = [];
-    jump = [];
+    code.length = 0;
+    jump.length = 0;
     cursor = 0;
+
+    input.length = 0;
+    output.length = 0;
+    inputPtr = 0;
+    inputLength = 0;
   };
 
   var $ = function(selector) {
@@ -35,6 +47,7 @@
   var mainEl = $('#main');
   var logEl = $$('#log', mainEl);
   var arrayEl = $$('#array', mainEl);
+  var inputEl = $$('#input', mainEl);
   var outputEl = $$('#output', mainEl);
   var consoleEl = $$('#console', mainEl);
 
@@ -59,9 +72,14 @@
         }
         break;
       case '.':
-        outputEl.value += String.fromCharCode(A[pointer]);
+        output.push(String.fromCharCode(A[pointer]));
         break;
-      case ',': break;
+      case ',': 
+        if (inputPtr < input.length) {
+          A[pointer] = input.charCodeAt(inputPtr);
+          inputPtr++;
+        }
+        break;
       case '[':
         if (A[pointer] > 0) {
           jump.push(cursor);
@@ -101,12 +119,14 @@
 
   var run = function() {
     code = consoleEl.value.split('');
+    input = inputEl.value;
     var _sum = code.length;
     for (cursor = 0; cursor < _sum;) {
       logToken(cursor, code[cursor]);
       interpreter(code[cursor]);
     }
     logToken(cursor, code[cursor]);
+    outputEl.value = output.join('');
   };
 
   var runBtn = $('#btnRun').onclick = function(e) {
@@ -120,7 +140,7 @@
     inputsBtn[i].onclick = function(e) {
       e.preventDefault();
       consoleEl.value += this.text;
-      consoleEl.focus();
+      // consoleEl.focus();
     };
   }
 
@@ -151,6 +171,7 @@
   var resetBtn = $('#btnReset').onclick = function(e) {
     e.preventDefault();
     resetBF();
+    consoleEl.value = '';
     // consoleEl.value = ' ++++++++++[>+++++++<-]>.';
   };
 

@@ -19,17 +19,18 @@ h1, h2, h3, h4, h5, h6 {
 .container {
   max-width: 800px;
 }
-#console {
+.console {
   background: #369ab8;
   color: #fff;
   font-size: 1.25em;
 }
-#output {
+.output {
   color: #369ab8;
   background: #fff;
 }
 .btnInput {
   font-weight: bold;
+  height: 100%;
 }
 .btn:hover {
   background: #fff;
@@ -40,18 +41,4 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
   border-color: #fff;
   color: #0088cc;
-}
-#nav a {
-  color: #fff;
-  font-style: italic;
-  text-decoration: none;
-}
-#hero {
-  background: #369ab8;
-  color: #fff;
-  text-align: center;
-}
-#footer {
-  color: #62696c;
-  text-align: center;
 }

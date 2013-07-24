@@ -46,19 +46,21 @@
 			</div>
 			
 			<div class="row">
-				<textarea id="console" autofocus="autofocus" placeholder="F*ck here"></textarea>
+				<textarea id="console" class="console" autofocus="autofocus" placeholder="F*ck here"></textarea>
+				<input type="text" id="input" placeholder="Input the f*ck here">
 			</div>
 			
 			<!-- <div class="row">
-				<input type="text" id="input" placeholder="Input the f*ck here">
 			</div> -->
 
 			<div class="row">
-				<div class="grid-2">
+				<div class="grid-1">
 					<a href="#" id="btnRun" class="btn btn-blue btn-large btn-block">Run</a>
 					<a href="#" id="btnReset" class="btn btn-block">Reset</a>
 				</div>
-				<div class="grid-4 text-right space-top-small space-bottom">
+				<!-- <div class="grid-1">
+				</div> -->
+				<div class="grid-5 text-right space-top-small space-bottom">
 					<div class="group space-bottom-small">
 						<a href="#" class="btn btnInput">+</a>
 						<a href="#" class="btn btnInput">-</a>
@@ -69,6 +71,7 @@
 						<a href="#" class="btn btnInput">[</a>
 						<a href="#" class="btn btnInput">]</a>
 					</div>
+					<!-- <br> -->
 					<div class="group space-bottom-small">
 						<a href="#" id="btnClear" class="btn">Clear</a>
 						<a href="#" id="btnBack" class="btn">Back</a>
@@ -83,7 +86,7 @@
 
 			<div class="row space-top">
 				<!-- <div class="grid-6"> -->
-					<textarea readonly id="output" placeholder="Output of f*ck here" rows="4"></textarea>
+					<textarea readonly id="output" class="output" placeholder="Output of f*ck here" rows="4"></textarea>
 				<!-- </div> -->
 			</div>
 
@@ -94,10 +97,10 @@
 			<br>
 		</section>
 
-		<script src="js/underscore.js"></script>
 		<script src="js/app.js"></script>
 
 		<!--
+		<script src="js/underscore.js"></script>
 		<script src="js/jquery-1.10.1.min.js"></script>
 		<script src="js/backbone-min.js"></script>
 		<script src="js/mustache.js"></script>
