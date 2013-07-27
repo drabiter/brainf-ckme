@@ -151,13 +151,6 @@
     // consoleEl.focus();
   };
 
-  var clearBtn = $('#btnClear');
-  clearBtn.onclick = function(e) {
-    e.preventDefault();
-    consoleEl.value = '';
-    // consoleEl.focus();
-  };
-
   var runBtn = $('#btnRun');
   runBtn.onclick = function(e) {
     e.preventDefault();
