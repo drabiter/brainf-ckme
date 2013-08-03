@@ -1,36 +1,111 @@
 (function(){
   'use strict';
 
-  var A = [0];
-  var pointer = 0;
-  // because length call is expensive
-  var length = 1;
+  var Interpreter = {
+    Memory: {
+      cells: [0], pointer: 0, length: 1
+    },
+    Code: {
+      source: [], jump: [], pointer: 0
+    },
+    Input: {
+      pointer: 0, length: 0
+    },
+    input: [],
+    output: [],
+    process: function(token) {
+      switch (token) {
+        case '+':
+          ++this.Memory.cells[this.Memory.pointer];
+          break;
+        case '-':
+          --this.Memory.cells[this.Memory.pointer];
+          break;
+        case '>':
+          this.Memory.pointer++;
+          if (this.Memory.pointer == this.Memory.length) {
+            this.Memory.length++;
+            this.Memory.cells.push(0);
+          }
+          break;
+        case '<':
+          if (this.Memory.pointer > 0) {
+            this.Memory.pointer--;
+          }
+          break;
+        case '.':
+          this.output.push(String.fromCharCode(this.Memory.cells[this.Memory.pointer]));
+          break;
+        case ',': 
+          if (this.Input.pointer < this.Input.length) {
+            this.Memory.cells[this.Memory.pointer] = this.input.charCodeAt(this.Input.pointer);
+            this.Input.pointer++;
+          }
+          break;
+        case '[':
+          if (this.Memory.cells[this.Memory.pointer] > 0) {
+            this.Code.jump.push(this.Code.pointer);
+          } else {
+            var _sum = this.Code.source.length;
+            var _stack = 0;
+            for (var i = this.Code.pointer + 1; (i < _sum || this.Code.pointer == i); i++) {
+              if (this.Code.source[i] == ']') {
+                if (_stack === 0) {
+                  this.Code.pointer = i;
+                } else {
+                  _stack--;
+                }
+              } else if (this.Code.source[i] == '[') {
+                _stack++;
+              }
+            }
+          }
+          break;
+        case ']':
+          if (this.Memory.cells[this.Memory.pointer] <= 0) {
+            this.Code.jump.pop();
+          } else {
+            this.Code.pointer = this.Code.jump[this.Code.jump.length - 1];
+            console.log('Code.jump to '+this.Code.pointer);
+          }
+          break;
+        default:
+      }
+      this.Code.pointer++;
+    },
+    run: function(codeArray, inputArray) {
+      this.Code.source = codeArray;
+      this.input = inputArray;
+      var _sum = this.Code.source.length;
+      for (this.Code.pointer = 0; this.Code.pointer < _sum;) {
+        this.logToken(this.Code.pointer, this.Code.source[this.Code.pointer]);
+        this.process(this.Code.source[this.Code.pointer]);
+      }
+      this.logToken(this.Code.pointer, this.Code.source[this.Code.pointer]);
+      return this.output;
+    },
+    reset: function() {
+      this.Memory.cells.length = 0;
+      this.Memory.cells.push(0);
+      this.Memory.pointer = 0;
+      this.Memory.length = 1;
 
-  var code = [];
-  var jump = [];
-  var cursor = 0;
+      this.Code.source.length = 0;
+      this.Code.jump.length = 0;
+      this.Code.pointer = 0;
 
-  var input = [];
-  var output = [];
-
-  var inputPtr = 0;
-  var inputLength = 0;
-
-  var resetBF = function() {
-    A.length = 0;
-    A.push(0);
-    pointer = 0;
-    length = 1;
-
-    code.length = 0;
-    jump.length = 0;
-    cursor = 0;
-
-    input.length = 0;
-    output.length = 0;
-    inputPtr = 0;
-    inputLength = 0;
+      this.input.length = 0;
+      this.output.length = 0;
+      this.Input.pointer = 0;
+      this.Input.length = 0;
+    },
+    logToken: function(c, token) {
+      console.log('A[' + this.Memory.pointer + '] = ' + this.Memory.cells[this.Memory.pointer] + ' next: ' + token + ' line ' + c);
+      console.log('  - ' + this.Memory.cells);
+    }
   };
+
+  // var interpreter = new Interpreter;
 
   var $ = function(selector) {
     return document.querySelector(selector);
@@ -50,83 +125,10 @@
   var inputEl = $$('#input', mainEl);
   var outputEl = $$('#output', mainEl);
   var consoleEl = $$('#console', mainEl);
-
-  var interpreter = function(token) {
-    switch (token) {
-      case '+':
-        ++A[pointer];
-        break;
-      case '-':
-        --A[pointer];
-        break;
-      case '>':
-        pointer++;
-        if (pointer == length) {
-          length++;
-          A.push(0);
-        }
-        break;
-      case '<':
-        if (pointer > 0) {
-          pointer--;
-        }
-        break;
-      case '.':
-        output.push(String.fromCharCode(A[pointer]));
-        break;
-      case ',': 
-        if (inputPtr < input.length) {
-          A[pointer] = input.charCodeAt(inputPtr);
-          inputPtr++;
-        }
-        break;
-      case '[':
-        if (A[pointer] > 0) {
-          jump.push(cursor);
-        } else {
-          var _sum = code.length;
-          var _stack = 0;
-          for (var i = cursor + 1; (i < _sum || cursor == i); i++) {
-            if (code[i] == ']') {
-              if (_stack === 0) {
-                cursor = i;
-              } else {
-                _stack--;
-              }
-            } else if (code[i] == '[') {
-              _stack++;
-            }
-          }
-        }
-        break;
-      case ']':
-        if (A[pointer] <= 0) {
-          jump.pop();
-        } else {
-          cursor = jump[jump.length - 1];
-          console.log('jump to '+cursor);
-        }
-        break;
-      default:
-    }
-    cursor++;
-  };
    
   var logToken = function(c, token) {
     console.log('A[' + pointer + '] = ' + A[pointer] + ' next: ' + token + ' line ' + c);
     console.log('  - ' + A);
-  };
-
-  var run = function() {
-    code = consoleEl.value.split('');
-    input = inputEl.value;
-    var _sum = code.length;
-    for (cursor = 0; cursor < _sum;) {
-      logToken(cursor, code[cursor]);
-      interpreter(code[cursor]);
-    }
-    logToken(cursor, code[cursor]);
-    outputEl.value = output.join('');
   };
 
   var inputsBtn = $$$('.btnInput');
@@ -149,15 +151,17 @@
   runBtn.onclick = function(e) {
     e.preventDefault();
     this.disabled = true;
-    resetBF();
+    Interpreter.reset();
     outputEl.value = '';
-    run();
+    var _output = Interpreter.run(consoleEl.value.split(''), inputEl.value.split(''));
+    console.log(_output);
+    outputEl.value = _output.join('');
     this.disabled = false;
   };
 
   var resetBtn = $('#btnReset').onclick = function(e) {
     e.preventDefault();
-    resetBF();
+    Interpreter.reset();
     consoleEl.value = '';
     // consoleEl.value = ' ++++++++++[>+++++++<-]>.';
   };
