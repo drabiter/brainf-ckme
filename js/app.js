@@ -129,12 +129,6 @@
     outputEl.value = output.join('');
   };
 
-  var runBtn = $('#btnRun').onclick = function(e) {
-    e.preventDefault();
-    resetBF();
-    run();
-  };
-
   var inputsBtn = $$$('.btnInput');
   for (var i = 0, sum = inputsBtn.length; i < sum; i++) {
     inputsBtn[i].onclick = function(e) {
