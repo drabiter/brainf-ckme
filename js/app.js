@@ -27,7 +27,6 @@
     inputsBtn[i].onclick = function(e) {
       e.preventDefault();
       consoleEl.value += this.text;
-      // consoleEl.focus();
     };
   }
 
@@ -35,23 +34,28 @@
   backBtn.onclick = function(e) {
     e.preventDefault();
     consoleEl.value = consoleEl.value.split('').slice(0, -1).join('');
-    // consoleEl.focus();
   };
 
   var runBtn = $('#btnRun');
   runBtn.onclick = function(e) {
     e.preventDefault();
-    this.disabled = true;
+
+    var button = this;
+    
+    button.disabled = true;
     Interpreter.reset();
     outputEl.value = '';
+    
+    console.time('run');
     Interpreter.run(
-      consoleEl.value.split(''),  // source code
-      inputEl.value.split(''),    // input data
-      {log: true},                // options
-      function(output){           // callback
+      consoleEl.value,          // source code
+      inputEl.value.split(''),  // input data
+      {log: true},              // options
+      function(output){         // callback
         console.log(output);
         outputEl.value = output.join('');
-        this.disabled = false;
+        button.disabled = false;
+        console.timeEnd('run');
       });
   };
 
@@ -59,11 +63,11 @@
     e.preventDefault();
     Interpreter.reset();
     consoleEl.value = '';
-    // consoleEl.value = ' ++++++++++[>+++++++<-]>.';
   };
 
 }());
 
+// consoleEl.value = ' ++++++++++[>+++++++<-]>.';
 // ++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.
 // ++++++++++[>+++++++<-]>.
 // +++[>++<-]>.
