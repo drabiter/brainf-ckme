@@ -1,6 +1,6 @@
 {
   "name": "brainfuckme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Interpreter for Brainfuck language",
   "main": "./lib/brainfuckme",
   "scripts": {
@@ -16,6 +16,5 @@
   ],
   "author": "Hendra G. (drabiter)",
   "license": "MIT",
-  "readmeFilename": "README.md",
-  "gitHead": "c3c71418d73f15c33edd457032ec4a4231345849"
+  "readmeFilename": "README.md"
 }
