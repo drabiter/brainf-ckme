@@ -7,22 +7,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   font-weight: bold;
 }
-/*.button {
-  border-radius: 0.5em;
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.5);
-  color: #369ab8;
-  color: #fff;
-  display: inline-block;
-  text-decoration: none;
-}*/
 .container { 
-  /*max-width: 80em;*/
   max-width: 60%;
   margin-left: auto; 
   margin-right: auto;
   margin-top: 1.5em;
 }
-.console {
+#console {
   background: #369ab8;
   color: #fff;
   font-size: 1.25em;
@@ -35,16 +26,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   height: 100%;
 }
-.btn:hover {
-  background: #fff;
-  border-color: #fff;
-  color: #808080;
-}
-.btn-blue:hover {
-  background: #fff;
-  border-color: #fff;
-  color: #0088cc;
-}
 .fork {
   position: fixed; 
   top: 0; 
@@ -54,8 +35,5 @@ h1, h2, h3, h4, h5, h6 {
 @media handheld, only screen and (max-width: 767px) {
   .container {
     max-width: 90%;
-  }
-  .mobile-hide {
-    display: none;
   }
 }
