@@ -2,17 +2,20 @@ Brainfuckme (brainf-ckme)
 ===========
 
 Write the f*cking Brainf*ck code and run the f*ck on the fly.
+[Demo page](http://drabiter.com/brainf-ckme).
 
-# Installation
-Brainfuckme supports client and server (node) usage.
-### Client
-`<script src="path/to/brainfuckme.js"></script>`
-### Server
+## Installation
+Brainfuckme supports client and server usage. 
+
+For client (browser), use simply grab `lib/brainfuckme.js`
+```html<script src="path/to/brainfuckme.js"></script>```
+
+For server (node), use npm
 `npm install brainfuckme`
 
-# Usage
+## Usage
 *f*ck!*
-### Client
+#### Client
 ```javascript
 var interpreter = new Brainfuckme();
 interpreter.run(
@@ -24,22 +27,22 @@ interpreter.run(
  	}
 );
 ```
-### Server
+#### Server
 Same as above, but of course it requires this first
 ```javascript
 var Brainfuckme = require('brainfuckme');
 ```
 
-# Parameters
+## Parameters
 `(new Brainfuckme()).run(code, input, options, callback);`
-`code`
-- String which can contains +-,.<>[] code and comments
-`input`
-- Array of characters. Used as input (duh!)
-`options`
-- Not much for now, specify boolean for `log` to enable logging
-`callback`
-- A function that take one argument, the array of character as result.
+- `code`
+String which can contains +-,.<>[] code and comments
+- `input`
+Array of characters. Used as input (duh!)
+- `options`
+Not much for now, specify boolean for `log` to enable logging
+- `callback`
+A function that take one argument, the array of character as result.
 
 ## Note
 *Take every single `f*ck` word on this project as joke*
