@@ -63,6 +63,8 @@
     e.preventDefault();
     Interpreter.reset();
     consoleEl.value = '';
+    inputEl.value = '';
+    outputEl.value = '';
   };
 
 }());
