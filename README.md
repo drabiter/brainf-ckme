@@ -1,17 +1,17 @@
 Brainfuckme (brainf-ckme)
 ===========
 
+[![NPM](https://nodei.co/npm/brainfuckme.png?downloads=true)](https://nodei.co/npm/brainfuckme/)
+
 Write the f*cking Brainf*ck code and run the f*ck on the fly.
 [Demo page](http://drabiter.com/brainf-ckme).
 
 ## Installation
 Brainfuckme supports client and server usage. 
 
-For client (browser), use simply grab `lib/brainfuckme.js` and add
-```<script src="path/to/brainfuckme.js"></script>```
+For client (browser), use simply grab `lib/brainfuckme.js` and add `<script src="path/to/brainfuckme.js"></script>`
 
-For server (node), use npm
-`npm install brainfuckme`
+For server (node), use npm command `npm install brainfuckme`
 
 ## Usage
 *f*ck!*
@@ -19,10 +19,10 @@ For server (node), use npm
 ```javascript
 var interpreter = new Brainfuckme();
 interpreter.run(
-  '++++++++++[>+++++++<-]>.',		// source code string
-  ['a', 'b'],										// input data
-  {log: true},									// options
-  function(output){							// callback
+  '++++++++++[>+++++++<-]>.',   // source code string
+  ['a', 'b'],                   // input data
+  {log: true},                  // options
+  function(output){             // callback
 		console.log(output);
 	}
 );
