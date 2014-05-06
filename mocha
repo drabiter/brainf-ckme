@@ -1,0 +1,2 @@
+#!/bin/bash
+NODE_ENV=test ./node_modules/.bin/mocha -C --recursive --compilers coffee:coffee-script/register $1

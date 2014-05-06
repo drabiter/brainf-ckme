@@ -1,11 +1,8 @@
 {
   "name": "brainfuckme",
-  "version": "0.0.2",
+  "version": "0.2.1",
   "description": "Interpreter for Brainfuck language",
-  "main": "./lib/brainfuckme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "./lib/brainfuckme.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/drabiter/brainf-ckme.git"
@@ -16,5 +13,10 @@
   ],
   "author": "Hendra G. (drabiter)",
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "mocha": "^1.18.2",
+    "chai": "^1.9.1",
+    "sinon": "^1.9.1"
+  }
 }
