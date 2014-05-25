@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  var Interpreter = new Brainfuckme();
+  var bfckme = new Brainfuckme();
 
   var $ = function(selector) {
     return document.querySelector(selector);
@@ -41,19 +41,18 @@
     e.preventDefault();
 
     var button = this;
-    
+
     button.disabled = true;
-    Interpreter.reset();
+    bfckme.reset();
     outputEl.value = '';
-    
+
     console.time('run');
-    Interpreter.run(
-      consoleEl.value,          // source code
-      inputEl.value.split(''),  // input data
-      {log: false},              // options
-      function(output){         // callback
+    bfckme.run(
+      consoleEl.value,                     // source code
+      bfckme.inputToArray(inputEl.value),  // input array
+      function(output, outputStr){                    // callback
         console.log(output);
-        outputEl.value = output.join('');
+        outputEl.value = outputStr
         button.disabled = false;
         console.timeEnd('run');
       });
@@ -61,7 +60,7 @@
 
   var resetBtn = $('#btnReset').onclick = function(e) {
     e.preventDefault();
-    Interpreter.reset();
+    bfckme.reset();
     consoleEl.value = '';
     inputEl.value = '';
     outputEl.value = '';
@@ -69,9 +68,3 @@
 
 }());
 
-// -,+[-[>>++++[>++++++++<-]<+<-[>+>+>-[>>>]<[[>+<-]>>+>]<<<<<-]]>>>[-]+>--[-[<->+++[-]]]<[++++++++++++<[>-[>+>>]>[+[<+>-]>+>>]<<<<<-]>>[<+>-]>[-[-<<[-]>>]<<[<<->>-]>>]<<[<<+>>-]]<[-]<.[-]<-,+]
-// consoleEl.value = ' ++++++++++[>+++++++<-]>.';
-// ++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.
-// ++++++++++[>+++++++<-]>.
-// +++[>++<-]>.
-// >+[>,] <[<] >>[.>]
