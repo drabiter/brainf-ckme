@@ -14,7 +14,6 @@ For client (browser), use simply grab `lib/brainfuckme.js` and add `<script src=
 For server (node), use npm command `npm install brainfuckme`
 
 ## Usage
-*f*ck!*
 #### Client
 ```javascript
 var bfkme = new Brainfuckme();
