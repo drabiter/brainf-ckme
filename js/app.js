@@ -21,6 +21,7 @@
   var inputEl = $$('#input', mainEl);
   var outputEl = $$('#output', mainEl);
   var consoleEl = $$('#console', mainEl);
+  var timerEL = $$('#timer', mainEl);
 
   var inputsBtn = $$$('.btnInput');
   for (var i = 0, sum = inputsBtn.length; i < sum; i++) {
@@ -46,15 +47,17 @@
     bfckme.reset();
     outputEl.value = '';
 
-    console.time('run');
+    var startTime = new Date();
     bfckme.run(
       consoleEl.value,                     // source code
       bfckme.inputToArray(inputEl.value),  // input array
-      function(output, outputStr){                    // callback
+      function(output, outputStr){         // callback
         console.log(output);
         outputEl.value = outputStr
         button.disabled = false;
-        console.timeEnd('run');
+        var endTime = new Date();
+        var timeResult = endTime.getTime() - startTime.getTime();
+        timerEL.innerHTML = timeResult;
       });
   };
 

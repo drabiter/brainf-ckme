@@ -1,99 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	    <meta charset="utf-8">
-	    <!-- Force latest available IE rendering engine and Chrome Frame (if installed) -->
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>BrainF*ckMe</title>
-	    <meta name="description" content="">
-	    <!-- Mobile Screen Resizing -->
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	    <!-- stylesheet -->
-		<link rel="stylesheet" href="css/style.min.css">
-		<link rel="stylesheet" href="css/style.css">
+  <head>
+      <meta charset="utf-8">
+      <!-- Force latest available IE rendering engine and Chrome Frame (if installed) -->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>BrainF*ckMe</title>
+      <meta name="description" content="">
+      <!-- Mobile Screen Resizing -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <!-- stylesheet -->
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-	    <script src="js/fastclick.js"></script>
-		<script>
-			window.addEventListener('load', function() {
-			    FastClick.attach(document.body);
-			}, false);
-		</script>
-	</head>
-	
-	<body>
+      <script src="js/fastclick.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+          FastClick.attach(document.body);
+      }, false);
+    </script>
+  </head>
 
-		<section id="main" class="container">
-			<div class="grid">
-				<div class="col-1-1">
-					<h1>BrainF*ckMe</h1>
-				</div>
-			</div>
-			<div class="grid mobile-hide">
-				<div class="col-1-1 text-small">
-					<span class="text-muted">
-						Write the f*cking Brainf*ck code and run the f*ck on the fly.
-					</span>
-				</div>
-			</div>
-			
-			<div class="grid">
-				<div class="col-1-1 text-small">
-					<textarea id="console" class="console" autofocus="autofocus" placeholder="type the f*ck here" rows="4"></textarea>
-				</div>
-			</div>
+  <body>
 
-			<div class="grid grid-pad">
-				<div class="col-1-1 text-center">
-					<a href="#" class="btn btn-light btn-large btnInput">+</a>
-					<a href="#" class="btn btn-light btn-large btnInput">-</a>
-					<a href="#" class="btn btn-light btn-large btnInput">&lt</a>
-					<a href="#" class="btn btn-light btn-large btnInput">&gt</a>
-					<a href="#" class="btn btn-light btn-large btnInput">.</a>
-					<a href="#" class="btn btn-light btn-large btnInput">,</a>
-					<a href="#" class="btn btn-light btn-large btnInput">[</a>
-					<a href="#" class="btn btn-light btn-large btnInput">]</a>
-					<a href="#" class="btn btn-dark btn-large btn-input" id="btnBack">Back</a>
-				</div>
-			</div>
+    <section id="main" class="container">
+      <div class="grid">
+        <div class="col-1-1">
+          <h1>BrainF*ckMe</h1>
+        </div>
+      </div>
+      <div class="grid mobile-hide">
+        <div class="col-1-1 text-small">
+          <span class="text-muted">
+            Write the f*cking Brainf*ck code and run the f*ck on the fly.
+          </span>
+        </div>
+      </div>
 
-			<div class="grid">
-				<div class="col-1-1 text-center">
-					<a href="#" id="btnRun" class="btn btn-blue btn-2x">Run</a>
-					<a href="#" id="btnReset" class="btn btn-orange btn-2x">Reset</a>
-				</div>
-			</div>
+      <div class="grid">
+        <div class="col-1-1 text-small">
+          <textarea id="console" class="console" autofocus="autofocus" placeholder="type the f*ck here" rows="4"></textarea>
+        </div>
+      </div>
 
-			<div class="grid space-top">
-				<div class="col-1-1 text-small">
-					<input type="text" id="input" placeholder="input the f*ck here">
-				</div>
-			</div>
-				
-			<div class="grid">
-				<div class="col-1-1">
-					<textarea readonly id="output" class="output" placeholder="output of f*ck here" rows="4"></textarea>
-				</div>
-			</div>
+      <div class="grid grid-pad">
+        <div class="col-1-1 text-center">
+          <a href="#" class="btn btn-light btn-large btnInput">+</a>
+          <a href="#" class="btn btn-light btn-large btnInput">-</a>
+          <a href="#" class="btn btn-light btn-large btnInput">&lt</a>
+          <a href="#" class="btn btn-light btn-large btnInput">&gt</a>
+          <a href="#" class="btn btn-light btn-large btnInput">.</a>
+          <a href="#" class="btn btn-light btn-large btnInput">,</a>
+          <a href="#" class="btn btn-light btn-large btnInput">[</a>
+          <a href="#" class="btn btn-light btn-large btnInput">]</a>
+          <a href="#" class="btn btn-dark btn-large btn-input" id="btnBack">Back</a>
+        </div>
+      </div>
 
-			<div class="grid grid-pad">
-				<div class="text-center text-small">
-					Created with <a href="http://vanilla-js.com/" target="blank">Vanilla.js</a> and <a href="https://github.com/drabiter/lesssimplegrid" target="blank">LessSimpleGrid</a>.
-				</div>
-			</div>
-		</section>
+      <div class="grid">
+        <div class="col-1-1 text-center">
+          <a href="#" id="btnRun" class="btn btn-blue btn-2x">Run</a>
+          <a href="#" id="btnReset" class="btn btn-orange btn-2x">Reset</a>
+        </div>
+      </div>
 
-	    <a class="profile" href="http://github.com/drabiter/brainf-ckme"><img class="fork" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+      <div class="grid space-top-small">
+        <div class="col-1-1 text-center">
+          <strong><span id="timer">0</span> ms</strong>
+        </div>
+      </div>
 
-		<script src="lib/brainfuckme.js"></script>
-		<script src="js/app.js"></script>
+      <div class="grid">
+        <div class="col-1-1 text-small">
+          <input type="text" id="input" placeholder="input the f*ck here">
+        </div>
+      </div>
 
-		<!--
-		<script src="js/kraken.js"></script>
-		<script src="js/underscore.js"></script>
-		<script src="js/jquery-1.10.1.min.js"></script>
-		<script src="js/backbone-min.js"></script>
-		<script src="js/mustache.js"></script>
-		-->
+      <div class="grid">
+        <div class="col-1-1">
+          <textarea readonly id="output" class="output" placeholder="output of f*ck here" rows="4"></textarea>
+        </div>
+      </div>
 
-	</body>
+      <div class="grid grid-pad">
+        <div class="text-center text-small">
+          Created with <a href="http://coffeescript.org/" target="blank">CoffeeScript</a> and <a href="https://github.com/drabiter/lesssimplegrid" target="blank">LessSimpleGrid</a>.
+        </div>
+      </div>
+    </section>
+
+      <a class="profile" href="http://github.com/drabiter/brainf-ckme"><img class="fork" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+    <script src="lib/brainfuckme.js"></script>
+    <script src="js/app.js"></script>
+
+    <!--
+    <script src="js/kraken.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/backbone-min.js"></script>
+    <script src="js/mustache.js"></script>
+    -->
+
+  </body>
 </html>
