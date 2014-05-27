@@ -1,4 +1,4 @@
-class Brainfuckme
+class @Brainfuckme
 
   constructor: ->
     @reset()
@@ -109,5 +109,5 @@ class Brainfuckme
     @cursor = 0
 
 
-module.exports = Brainfuckme
+module.exports = Brainfuckme if module
 
