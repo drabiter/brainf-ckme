@@ -11,6 +11,9 @@
     "brainfuck",
     "interpreter"
   ],
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha -C --recursive --compilers coffee:coffee-script/register test/"
+  },
   "author": "Hendra G. (drabiter)",
   "license": "MIT",
   "readmeFilename": "README.md",

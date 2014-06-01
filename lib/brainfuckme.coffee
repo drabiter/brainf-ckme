@@ -109,5 +109,5 @@ class @Brainfuckme
     @cursor = 0
 
 
-module.exports = Brainfuckme if module
+module.exports = @Brainfuckme if module && module.exports
 
