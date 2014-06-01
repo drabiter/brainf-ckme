@@ -14,12 +14,13 @@
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/.bin/mocha -C --recursive --compilers coffee:coffee-script/register test/"
   },
-  "author": "Hendra G. (drabiter)",
+  "author": "Hendra G.",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "dependencies": {
+  "devDependencies": {
     "mocha": "^1.18.2",
     "chai": "^1.9.1",
     "sinon": "^1.9.1"
-  }
+  },
+  "homepage": "http://drabiter.com/brainf-ckme"
 }
