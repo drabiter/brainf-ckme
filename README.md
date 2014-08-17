@@ -2,7 +2,7 @@ Brainfuckme (brainf-ckme)
 ===========
 
 [![Build Status](https://travis-ci.org/drabiter/brainf-ckme.svg?branch=master)](https://travis-ci.org/drabiter/brainf-ckme)
-[![Coverage Status](https://coveralls.io/repos/drabiter/brainf-ckme/badge.png)](https://coveralls.io/r/drabiter/brainf-ckme)
+[![Coverage Status](https://img.shields.io/coveralls/drabiter/brainf-ckme.svg)](https://coveralls.io/r/drabiter/brainf-ckme?branch=master)
 
 [![NPM](https://nodei.co/npm/brainfuckme.png?downloads=true)](https://nodei.co/npm/brainfuckme/)
 
