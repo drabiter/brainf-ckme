@@ -3,7 +3,7 @@ sinon = require("sinon")
 
 context = describe
 
-Brainfuckme = require("../lib/brainfuckme.coffee")
+Brainfuckme = require("../lib/brainfuckme")
 
 ALLOWED_CHARS = ['<', '>', ',', '.', '-', '+', '[', ']']
 
