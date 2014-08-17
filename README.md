@@ -1,6 +1,8 @@
 Brainfuckme (brainf-ckme)
 ===========
 
+[![Build Status](https://travis-ci.org/drabiter/brainf-ckme.svg?branch=master)](https://travis-ci.org/drabiter/brainf-ckme)
+
 [![NPM](https://nodei.co/npm/brainfuckme.png?downloads=true)](https://nodei.co/npm/brainfuckme/)
 
 Write the f*cking Brainf*ck code and run the f*ck.
