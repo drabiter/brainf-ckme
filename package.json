@@ -23,5 +23,9 @@
     "sinon": "^1.9.1",
     "coffee-script": "latest"
   },
-  "homepage": "http://drabiter.com/brainf-ckme"
+  "homepage": "http://drabiter.com/brainf-ckme",
+  "dependencies": {
+    "coveralls": "^2.11.1",
+    "mocha-lcov-reporter": "0.0.1"
+  }
 }
