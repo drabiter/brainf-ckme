@@ -4,14 +4,14 @@ Brainfuckme (brainf-ckme)
 [![Build Status][travis-img]][travis-url]
 [![Coverage Status][coveralls-img]][coveralls-url]
 
-[travis-img]: https://travis-ci.org/drabiter/brainf-ckme.svg?branch=master
+[travis-img]: http://img.shields.io/travis/drabiter/brainf-ckme.svg?style=flat-square
 [travis-url]: https://travis-ci.org/drabiter/brainf-ckme
-[coveralls-img]: https://img.shields.io/coveralls/drabiter/brainf-ckme.svg
+[coveralls-img]: http://img.shields.io/coveralls/drabiter/brainf-ckme.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/drabiter/brainf-ckme?branch=master
 
 [![NPM](https://nodei.co/npm/brainfuckme.png?downloads=true)](https://nodei.co/npm/brainfuckme/)
 
-Write the f*cking Brainf*ck code and run the f*ck.
+Write the f*cking Brainf*ck code and run the f-ck.
 [Demo page](http://drabiter.com/brainf-ckme).
 
 ## Installation
