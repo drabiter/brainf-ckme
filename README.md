@@ -3,11 +3,14 @@ Brainfuckme (brainf-ckme)
 
 [![Build Status][travis-img]][travis-url]
 [![Coverage Status][coveralls-img]][coveralls-url]
+[![NPM Download][npm-img]][npm-url]
 
 [travis-img]: http://img.shields.io/travis/drabiter/brainf-ckme.svg?style=flat-square
 [travis-url]: https://travis-ci.org/drabiter/brainf-ckme
 [coveralls-img]: http://img.shields.io/coveralls/drabiter/brainf-ckme.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/drabiter/brainf-ckme?branch=master
+[npm-img]: http://img.shields.io/npm/v/npm.svg?style=flat-square
+[npm-url]: https://www.npmjs.org/package/brainfuckme
 
 [![NPM](https://nodei.co/npm/brainfuckme.png?downloads=true)](https://nodei.co/npm/brainfuckme/)
 
