@@ -71,6 +71,9 @@
     describe("resuming operation", function() {
       return it("reset only cursor", function() {
         this.bfckme.run("++>>+<+++");
+        expect(this.bfckme.pointer).to.eq(1);
+        expect(this.bfckme.value()).to.eq(3);
+        expect(this.bfckme.memory).to.eql([2, 3, 1]);
         this.bfckme.resume("+");
         expect(this.bfckme.pointer).to.eq(1);
         expect(this.bfckme.value()).to.eq(4);
@@ -93,7 +96,23 @@
       });
     });
     describe("processing the source", function() {
+      var sharedFalsyValueTest;
+      sharedFalsyValueTest = function(command, expected) {
+        return context("when current value is not available", function() {
+          it("fills null with 0", function() {
+            this.bfckme.memory[this.bfckme.pointer] = null;
+            this.bfckme.run(command);
+            return expect(this.bfckme.value()).to.eq(expected);
+          });
+          return it("fills undefined with 0", function() {
+            this.bfckme.memory[this.bfckme.pointer] = void 0;
+            this.bfckme.run(command);
+            return expect(this.bfckme.value()).to.eq(expected);
+          });
+        });
+      };
       describe("(+) operator", function() {
+        sharedFalsyValueTest("+", 1);
         return it("increase current pointed value", function() {
           this.bfckme.run("+");
           expect(this.bfckme.value()).to.eq(1);
@@ -102,6 +121,7 @@
         });
       });
       describe("(-) operator", function() {
+        sharedFalsyValueTest("-", 0);
         context("when current value > 0", function() {
           return it("reduce the current pointed value", function() {
             this.bfckme.memory[0] = 6;
@@ -177,9 +197,13 @@
         });
       });
       return describe("(]) operator", function() {
-        return it("moves to its open bracket", function() {
+        it("moves to its open bracket", function() {
           this.bfckme.run("+[--]");
           return expect(this.bfckme.cursor).to.eq(5);
+        });
+        return it("breaks on no match", function() {
+          this.bfckme.run("+.--]");
+          return expect(this.bfckme.cursor).to.not.be.defined;
         });
       });
     });

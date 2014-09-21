@@ -3,6 +3,43 @@ class @Brainfuckme
   constructor: ->
     @reset()
 
+  run: (_src, _input, _callback) ->
+    @input = _input.slice() if _input
+    commands = @_trimCode(_src)
+    @_operate(commands, @input)
+
+    _callback(@output, @outputToString()) if _callback
+    @output
+
+  resume: (_src, _input, _callback) ->
+    @cursor = 0
+    @run(_src, _input)
+
+    _callback(@output, @outputToString()) if _callback
+
+  outputToString: ->
+    chars = []
+    for n in @output
+      chars.push(String.fromCharCode(n))
+    chars.join("")
+
+  inputToArray: (string) ->
+    array = []
+    chars = string.split('')
+    array.push(i.charCodeAt(0)) for i in chars
+    array
+
+  value: ->
+    @memory[@pointer]
+
+  reset: ->
+    @memory = new Array()
+    @memory[0] = 0
+    @pointer = 0
+    @input = new Array()
+    @output = new Array()
+    @cursor = 0
+
   _trimCode: (source) ->
     source.replace(/[^+-.,<>\[\]]+/g, '')
 
@@ -26,7 +63,7 @@ class @Brainfuckme
 
   _decreaseValue: ->
     @memory[@pointer] = 0 unless (@value() or @value()?)
-    @memory[@pointer]-- unless @value() <= 0
+    @memory[@pointer]-- if @value() > 0
 
     @cursor++
 
@@ -37,7 +74,7 @@ class @Brainfuckme
     @cursor++
 
   _decreasePointer: ->
-    @pointer-- unless @pointer <= 0
+    @pointer-- if @pointer > 0
 
     @cursor++
 
@@ -69,44 +106,7 @@ class @Brainfuckme
       else if commands[i] is target
         count--
         return i if count is 0
-    return NaN
-
-  value: ->
-    @memory[@pointer]
-
-  run: (_src, _input, _callback) ->
-    @input = _input.slice() if _input
-    commands = @_trimCode(_src)
-    @_operate(commands, @input)
-
-    _callback(@output, @outputToString()) if _callback
-    @output
-
-  resume: (_src, _input, _callback) ->
-    @cursor = 0
-    @run(_src, _input)
-
-    _callback(@output, @outputToString()) if _callback
-
-  outputToString: ->
-    chars = []
-    for n in @output
-      chars.push(String.fromCharCode(n))
-    chars.join("")
-
-  inputToArray: (string) ->
-    array = []
-    chars = string.split('')
-    array.push(i.charCodeAt(0)) for i in chars
-    array
-
-  reset: ->
-    @memory = new Array()
-    @memory[0] = 0
-    @pointer = 0
-    @input = new Array()
-    @output = new Array()
-    @cursor = 0
+    return undefined
 
 
 module.exports = @Brainfuckme if module && module.exports

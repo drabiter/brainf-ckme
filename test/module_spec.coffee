@@ -67,6 +67,10 @@ describe "Brainfuckme", ->
   describe "resuming operation", ->
     it "reset only cursor", ->
       @bfckme.run("++>>+<+++")
+      expect(@bfckme.pointer).to.eq(1)
+      expect(@bfckme.value()).to.eq(3)
+      expect(@bfckme.memory).to.eql([2, 3, 1])
+
       @bfckme.resume("+")
 
       expect(@bfckme.pointer).to.eq(1)
@@ -89,8 +93,24 @@ describe "Brainfuckme", ->
       expect(spy.calledWith([97], "a")).to.be.true
 
   describe "processing the source", ->
+    sharedFalsyValueTest = (command, expected) ->
+      context "when current value is not available", ->
+        it "fills null with 0", ->
+          @bfckme.memory[@bfckme.pointer] = null
+          @bfckme.run(command)
+          expect(@bfckme.value()).to.eq(expected)
+
+        it "fills undefined with 0", ->
+          @bfckme.memory[@bfckme.pointer] = undefined
+          @bfckme.run(command)
+          expect(@bfckme.value()).to.eq(expected)
+
     describe "(+) operator", ->
+
+      sharedFalsyValueTest("+", 1)
+
       it "increase current pointed value", ->
+
         @bfckme.run("+")
         expect(@bfckme.value()).to.eq(1)
 
@@ -98,6 +118,9 @@ describe "Brainfuckme", ->
         expect(@bfckme.value()).to.eq(3)
 
     describe "(-) operator", ->
+
+      sharedFalsyValueTest("-", 0)
+
       context "when current value > 0", ->
         it "reduce the current pointed value", ->
           @bfckme.memory[0] = 6
@@ -175,6 +198,11 @@ describe "Brainfuckme", ->
         @bfckme.run("+[--]")
 
         expect(@bfckme.cursor).to.eq(5)
+
+      it "breaks on no match", ->
+        @bfckme.run("+.--]")
+
+        expect(@bfckme.cursor).to.not.be.defined
 
   describe "private methods", ->
     beforeEach ->

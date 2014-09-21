@@ -10,4 +10,3 @@ build:
 test.coverage: build
 	@$(ISTANBUL) cover $(_MOCHA) -- --reporter spec --recursive test/*.js \
 		&& cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js \
-		&& rm -rf ./coverage

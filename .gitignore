@@ -3,3 +3,4 @@ Gemfile.lock
 Guardfile
 .npmignore
 node_modules
+coverage/
