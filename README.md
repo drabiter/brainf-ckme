@@ -39,6 +39,8 @@ bfkme.run(
 #### Server
 ```javascript
 var Brainfuckme = require('brainfuckme');
+var bfme        = new Brainfuckme();
+bfme.run()
 ```
 
 ## API
